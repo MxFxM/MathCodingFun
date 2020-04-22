@@ -14,6 +14,7 @@ print(f"{number} squared is {approx}")
 adder = 1
 approx = 0
 comma = 0
+index = 0
 for index in range(number):  # its square root cannot be larger than itself
     approx = approx + adder
     if approx > number:
@@ -23,3 +24,17 @@ for index in range(number):  # its square root cannot be larger than itself
     adder = adder + 2
 print(
     f"and the square root of {number} is somewhere around {index}.{round(comma * 10)}")
+
+# better performing square root?
+# is it tho?
+adder = 1
+approx = 0
+comma = 0
+index = 0
+for index in range(number):  # its square root cannot be larger than itself
+    if approx > number:
+        comma = (number - (approx - adder)) / adder
+        break
+    adder = adder + 2
+    approx = approx + adder
+print(f"the better performing square root is {index}.{round(comma * 10)}")
