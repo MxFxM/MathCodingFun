@@ -3,15 +3,21 @@ import math
 
 time = [n*0.01 for n in range(2000)]
 
-amplitude = 1 # amplitude of oscillation
-frequency = 1 # frequency in Hz (undamped)
-phase = 0 # phase offset in radians
-damping = 0.1 # damping ratio
+amplitudeX = 1 # amplitude of oscillation
+frequencyX = 1 # frequency in Hz (undamped)
+phaseX = 0 # phase offset in radians
+dampingX = 0.1 # damping ratio
+amplitudeY = 1 # amplitude of oscillation
+frequencyY = 1 # frequency in Hz (undamped)
+phaseY = 0 # phase offset in radians
+dampingY = 0.01 # damping ratio
 
-omega = 2 * math.pi * frequency
+omegaX = 2 * math.pi * frequencyX
+omegaY = 2 * math.pi * frequencyY
 
-# y = [math.sin(omega*t) for t in time] # a simple sine wave
-y = [amplitude * math.pow(math.e, -damping * omega * t) * math.sin(math.sqrt(1 - damping**2) * omega * t) for t in time] # a damped sine wave
+x = [amplitudeX * math.pow(math.e, -dampingX * omegaX * t) * math.sin(math.sqrt(1 - dampingX**2) * omegaX * t + phaseX) for t in time] # a damped sine wave
+y = [amplitudeY * math.pow(math.e, -dampingY * omegaY * t) * math.sin(math.sqrt(1 - dampingY**2) * omegaY * t + phaseY) for t in time] # a damped sine wave
 
+plt.plot(time, x)
 plt.plot(time, y)
 plt.show()
